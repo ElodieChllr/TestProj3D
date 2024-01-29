@@ -21,7 +21,7 @@ public class Clé : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) //&& playerInputRef.actions["Interagir"].IsInProgress())
+        if (other.CompareTag("Player") && playerInputRef.actions["Interagir"].IsPressed())
         {
             Debug.Log("prend");
         }
