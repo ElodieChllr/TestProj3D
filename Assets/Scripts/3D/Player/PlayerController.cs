@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 offset;
 
 
+
+    public GameObject mainCamera;
+    public GameObject photoCamera;
+
     private void Awake()
     {
         playerMap = new PlayerMap();
@@ -85,6 +89,17 @@ public class PlayerController : MonoBehaviour
         // Regard de la caméra
         Quaternion lookRotation = Quaternion.LookRotation(transform.position - cameraMainTransform.position, Vector3.up);
         cameraMainTransform.rotation = Quaternion.Slerp(cameraMainTransform.rotation, lookRotation, Time.deltaTime * 5f);
+    }
+
+
+    public void OnCamPictures()
+    {
+        if (playerInput.actions["Photo"].WasPressedThisFrame())
+        {
+            mainCamera.SetActive(false);
+            photoCamera.SetActive(true);
+
+        }
     }
 
 }
